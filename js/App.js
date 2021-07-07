@@ -89,7 +89,10 @@ const listshow = () => {
 
 const productShow = (getKeys) => {
     var id = getKeys;
-    fetch("http://127.0.0.1:5500/product-list.json")
+    var win=document.URL;
+    const regex = /index.html/i;
+    const path=win.replace(regex, '');
+    fetch(`${path}product-list.json`)  //"http://127.0.0.1:5500/product-list.json"
         .then((res) => res.json())
         .then((data) => {
             let get = data.responses[0][0].params.recommendedProducts;
