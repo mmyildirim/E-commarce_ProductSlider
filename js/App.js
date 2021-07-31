@@ -7,6 +7,9 @@ var alertLoading = document.querySelector(".alertt");
 var closeButton = document.querySelector(".close-btn");
 var card = document.querySelector(".card");
 var checkControl = document.querySelector(".checkIcon");
+
+
+
 buttonSelected.addEventListener("click", (e) => {
     var ss = e.target.id;
     ul.classList.add("cs-hidden");
@@ -66,7 +69,7 @@ const changeSelected = (nes) => {
     });
 };
 const listshow = () => {
-    fetch("http://127.0.0.1:5500/product-list.json")
+    fetch(`api/product-list.json`)
         .then((res) => res.json())
         .then((data) => {
             let gelen = data.responses[0][0].params.userCategories;
@@ -89,10 +92,8 @@ const listshow = () => {
 
 const productShow = (getKeys) => {
     var id = getKeys;
-    var win=document.URL;
-    const regex = /index.html/i;
-    const path=win.replace(regex, '');
-    fetch(`${path}product-list.json`)  //"http://127.0.0.1:5500/product-list.json"
+   
+    fetch(`api/product-list.json`)  //"http://127.0.0.1:5500/product-list.json"
         .then((res) => res.json())
         .then((data) => {
             let get = data.responses[0][0].params.recommendedProducts;
